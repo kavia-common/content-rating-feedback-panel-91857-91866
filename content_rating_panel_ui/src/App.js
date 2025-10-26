@@ -43,7 +43,7 @@ function App() {
 
   const [showPanel, setShowPanel] = useState(false);
   const [status, setStatus] = useState('');
-  const demoRef = useRef<HTMLDivElement>(null);
+  const demoRef = useRef(null);
 
   const simulateEndOfEvent = () => {
     setEventEnded(true);
@@ -59,7 +59,7 @@ function App() {
     setStatus('Panel cerrado.');
   }, [panel]);
 
-  const onFocusActivity = useCallback((active: boolean) => {
+  const onFocusActivity = useCallback((active) => {
     // Pause auto-dismiss while user is interacting
     if (active) panel.pauseTimer();
     else panel.resumeTimer();
@@ -67,7 +67,7 @@ function App() {
 
   const onToastHide = () => panel.clearToast();
 
-  const submit = (v: any) => panel.submit(v);
+  const submit = (v) => panel.submit(v);
   const remove = () => panel.remove();
 
   const headerNote = useMemo(() => (
